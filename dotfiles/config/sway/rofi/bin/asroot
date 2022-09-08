@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+DIR="$HOME/.config/sway"
+
+rofi_command="rofi -theme $DIR/rofi/themes/asroot.rasi"
+
+# Apps
+terminal=" Kitty"
+files=" Nemo"
+editor=" Geany"
+clifm=" Ranger"
+vim=" Vim"
+
+# Variable passed to rofi
+options="$terminal\n$files\n$editor\n$clifm\n$vim"
+term='kitty'
+
+# Functions
+
+chosen="$(echo -e "$options" | $rofi_command -p "Run as root" -dmenu -selected-row 0)"
+case $chosen in
+    $terminal)
+        "$DIR"/bin/asroot.sh "$term"
+        ;;
+    $files)
+        "$DIR"/bin/asroot.sh 'dbus-run-session nemo'
+        ;;
+    $editor)
+        "$DIR"/bin/asroot.sh geany
+        ;;
+    $clifm)
+        "$DIR"/bin/asroot.sh "$term -e ranger"
+        ;;
+    $vim)
+        "$DIR"/bin/asroot.sh "$term -e vim"
+        ;;
+esac
+
+

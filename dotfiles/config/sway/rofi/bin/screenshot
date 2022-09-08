@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+DIR="$HOME/.config/sway"
+
+time=`date +%Y-%m-%d-%H-%M-%S`
+geometry=`xrandr | grep 'current' | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current'`
+dir="`xdg-user-dir PICTURES`/Screenshots"
+file="Screenshot_${time}_${geometry}.png"
+
+# Commands
+notify_cmd_shot="dunstify -u low --replace=699 -i /usr/share/icons/dunst/picture.png"
+rofi_command="rofi -theme $DIR/rofi/themes/screenshot.rasi"
+
+# Buttons
+screen=""
+area=""
+window=""
+infive=""
+inten=""
+
+# notify and view screenshot
+notify_view () {
+	${notify_cmd_shot} "Copied to clipboard."
+	viewnior ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	if [[ -e "$dir/$file" ]]; then
+		${notify_cmd_shot} "Screenshot Saved."
+	else
+		${notify_cmd_shot} "Screenshot Deleted."
+	fi
+}
+
+# Copy screenshot to clipboard
+copy_shot () {
+	tee "$file" | xclip -selection clipboard -t image/png
+}
+
+# countdown
+countdown () {
+	for sec in `seq $1 -1 1`; do
+		dunstify -t 1000 --replace=699 -i /usr/share/archcraft/icons/dunst/timer.png "Taking shot in : $sec"
+		sleep 1
+	done
+}
+
+# take shots
+shotnow () {
+	grim - | wl-copy | grim ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	notify_view
+}
+
+shot5 () {
+	countdown '5'
+	grim - | wl-copy | grim ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	notify_view
+}
+
+shot10 () {
+	countdown '10'
+	grim - | wl-copy | grim ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	notify_view
+}
+
+shotwin () {
+	grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy | grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	notify_view
+}
+
+shotarea () {
+	grim -t png -g "$(slurp)" ~/Pictures/Screenshots/$(date +'%s_grim.png') - | wl-copy 
+	notify_view
+}
+
+if [[ ! -d "$dir" ]]; then
+	mkdir -p "$dir"
+fi
+
+# Variable passed to rofi
+options="$screen\n$area\n$window\n$infive\n$inten"
+
+chosen="$(echo -e "$options" | $rofi_command -p 'Take Screenshot' -dmenu -selected-row 0)"
+case $chosen in
+    $screen)
+		shotnow
+        ;;
+    $area)
+		shotarea
+        ;;
+    $window)
+		shotwin
+		;;
+    $infive)
+		shot5
+		;;
+    $inten)
+		shot10
+        ;;
+esac
+

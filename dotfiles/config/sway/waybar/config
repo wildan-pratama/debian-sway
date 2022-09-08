@@ -1,0 +1,135 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    // "height": 20, // Waybar height (to be removed for auto height)
+    // Archived modules
+    // "custom/gpu", "bluetooth",  "custom/weather", "temperature", "sway/window"
+    // Choose the order of the modules
+    "modules-left": [ "clock", "sway/language", "sway/mode", "cpu", "memory",],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": [ "mpd", "pulseaudio", "network", "tray"],
+    // Modules configuration
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "<span color=\"#D8DEE9\"></span>",
+            "2": "<span color=\"#D8DEE9\"></span>",
+            "3": "<span color=\"#88C0D0\"></span>",
+            "4": "<span color=\"#88C0D0\"></span>",
+            "5": "<span color=\"#A3BE8C\"></span>",
+            "6": "<span color=\"#D8DEE9\"></span>",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/window": {
+        "format": "{}",
+        "max-length": 50, 
+        "tooltip": false
+    },
+    "mpd": {
+        "format": "{title} - {artist}",
+        "format-disconnected": "Disconnected",
+        "on-click": "~/.config/sway/rofi/bin/mpd",
+        "max-length": 25,
+    },
+    "bluetooth": {
+        "interval": 30,
+        "format": "{icon}",
+        // "format-alt": "{status}",
+        "format-icons": {
+            "enabled": "",
+            "disabled": ""
+        },
+        "on-click": "blueberry"
+    },    
+    "sway/language": {
+        "format": "<big></big> {}",
+        "max-length": 5,
+        "min-length": 5,        
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": "true"
+    },
+    "tray": {
+        //"icon-size": 11,
+        "spacing": 5
+    },
+    "clock": {
+        "format": "  {:%H:%M   %e %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "today-format": "<b>{}</b>",
+        "on-click": "gnome-calendar"
+    },
+    "cpu": {
+        "interval": "1",      
+        "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
+        "max-length": 13,
+        "min-length": 13,
+        "on-click": "kitty -e btop",
+        "tooltip": false
+    },
+    "memory": {
+		"on-click": "kitty -e btop",
+	},
+    
+    "temperature": {
+        //"thermal-zone": 1,
+        "interval": "4",
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 74,
+        "format-critical": "  {temperatureC}°C",
+        "format": "{icon}  {temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "max-length": 7,
+        "min-length": 7
+    },
+    "network": {
+        // "interface": "wlan0", // (Optional) To force the use of this interface,
+        "format-wifi": "  {essid}",
+        // "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-ethernet": "{ifname} ",
+        // "format-linked": "{ifname} (No IP) ",
+        "format-linked": "{ifname} ",
+        "format-disconnected": "",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-alt": "{ifname}",
+        "family": "ipv4",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}",
+        "on-click": "~/.config/sway/rofi/bin/network_menu"
+    },
+    "pulseaudio": {
+        "scroll-step": 3, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        //"format-source": "{volume}% ",
+        //"format-source-muted": "",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+    }
+}
