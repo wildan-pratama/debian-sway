@@ -18,11 +18,11 @@ Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/uno
 ## To Install
 
 
-    git clone https://github.com/EndeavourOS-Community-Editions/sway.git
+    git clone https://github.com/wildan-pratama/debian-sway
 
-    cd sway
+    cd debian-sway
 
-    bash sway-install.sh
+    ./install.sh
    
 ## Contained In The Script
     cp -R .config/* ~/.config/
