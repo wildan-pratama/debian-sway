@@ -68,11 +68,11 @@ Is set to default for swaywm and can be changed to:
    - <kbd>MOD</kbd>+<kbd>B</kbd> = Vertical List
    - <kbd>MOD</kbd>+<kbd>V</kbd> = Horizontal List
      - navigate lists with <kbd>MOD</kbd>+<kbd>↑ ↓ → ←</kbd> 
-   - <kbd>MOD</kbd>+<kbd>E</kbd> = Back to tiling
    
 
 
-![sway](https://forum.endeavouros.com/uploads/default/original/3X/b/c/bc09b71d718cb09a8efd4545cc65366c5f855441.png)
+![image](https://user-images.githubusercontent.com/84622086/197395071-52498d0c-d5d4-409c-9be3-18c09a7d97c6.png)
+
 ![wofi](https://forum.endeavouros.com/uploads/default/original/3X/9/d/9daff7f842bd9db097e0bb9d6be5cf5b65e6baa0.jpeg)
 
 Waybar :
