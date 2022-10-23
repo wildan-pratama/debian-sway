@@ -26,9 +26,9 @@ configuration {
 }
 
 window {
-    border: 						3px;
+    border: 						4px;
     border-color: 					@selected;
-    border-radius: 					0px;
+    border-radius: 					20px;
     width: 							600px;
     height: 						0px;
 }
@@ -36,16 +36,15 @@ window {
 prompt {
     spacing: 						0;
     border: 						0;
-    border-radius: 					10px;
-    background-color:             	@highlight;
-    text-color: 					@background;
+    border-radius: 					100%;
+    text-color: 					@selected;
     padding:    					6px 14px 6px 10px;
 }
 
 textbox-prompt-colon {
     expand: 						false;
     str: 							"";
-    padding:    					6px 4px 6px 4px;
+    padding:    					5px 5px 10px 5px;
     text-color: 					inherit;
 }
 
@@ -54,7 +53,7 @@ entry {
     expand:                         true;
     horizontal-align:               0;
     text-color: 					@foreground;
-    placeholder-color:              @FG;
+    placeholder-color:              @foreground;
     placeholder:                    "Search...";
     padding:    					6px 2px 6px 2px;
     border: 						0px 0px 0px 0px;
@@ -70,9 +69,9 @@ case-indicator {
 inputbar {
     spacing:    					0px;
     text-color: 					@foreground;
-    border: 						0px;
+    border: 						2px;
     border-color: 					@selected;
-    border-radius: 					0px;
+    border-radius: 					100%;
     children: 						[ prompt,textbox-prompt-colon,entry ];
 }
 
@@ -119,7 +118,7 @@ element selected.normal {
     background-color: 				@selected;
     text-color:       				@background;
     border: 						0px;
-    border-radius: 						10px;
+    border-radius: 					10px;
     border-color: 					@selected;
 }
 element selected.urgent {
@@ -150,22 +149,22 @@ sidebar {
 }
 
 button {
-    margin: 						5px 10px 0px 10px;
+    margin: 						5px 10px 10px 10px;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     padding: 						7px;
-    background-color:             	@highlight;
-    text-color: 					@background;
-    border: 						0px;
-    border-radius: 					10px;
+    background-color:				@background;
+    text-color: 					@selected;
+    border: 						2px;
+    border-radius: 					100%;
     border-color: 					@selected;
 }
 
 button selected {
-    background-color:             	@on;
+    background-color:             	@selected;
     text-color: 					@background;
     border: 						0px;
-    border-radius: 					10px;
+    border-radius: 					100%;
     border-color: 					@selected;
 }
 

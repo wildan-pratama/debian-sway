@@ -12,16 +12,69 @@ set $down j
 set $up k
 set $right l
 
-##-- Mod Keys ----------------------------
+##-- Mod Keys
 set $mod Mod4
 set $alt Mod1
 set $ctrl Control
 
-##-- Fonts (Global) ----------------------
+
+
+
+
+##-- Color, Theme & Fonts (Global)
+
+##-- Color
+# class                 border  backgr. text    indicator child_border
+client.focused          #D8DEE9 #D8DEE9 #2E3440 #D8DEE9   #D8DEE9
+client.focused_inactive #D8DEE9 #D8DEE9 #2E3646 #D8DEE9   #D8DEE9
+client.unfocused        #D8DEE9 #2E3440 #D8DEE9 #D8DEE9   #D8DEE9
+client.urgent           #C678DD #C678DD #DCD2DA #98C379   #C678DD
+client.placeholder      #1E222A #1E222A #DCD2DA #98C379   #1E222A
+client.background       #D8DEE9
+##-- Theme & Fonts
 font pango:JetBrains Mono Medium 10
+exec gsettings set org.gnome.desktop.interface gtk-theme 'Nordic'
+exec gsettings set org.gnome.desktop.wm.preferences theme 'Nordic'
+exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+exec gsettings set org.gnome.desktop.interface font-name 'Sans 10
 
-##-- Gaps --------------------------------
 
+
+
+##-- Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg ~/Pictures/backgrounds/bganime-hd.png fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+
+
+
+##-- Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+
+
+
+
+
+##-- Gaps
 # Title bar text alignment
 title_align center
 
@@ -29,7 +82,7 @@ title_align center
 #for_window [class=".*"] border normal 4
 
 # Uncomment this to disable title bars
-default_border pixel 2
+default_border pixel 4
 
 # Gaps (Outer gaps are added to the inner gaps)
 gaps outer 4
@@ -41,44 +94,21 @@ gaps inner 4
 # Activate smart borders (always)
 #smart_borders on
 
-##-- Colors ------------------------------
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #5C84AC #5C84AC #FFFFFF #98C379   #5C84AC
-client.focused_inactive #61AFEF #61AFEF #2E3646 #98C379   #61AFEF
-client.unfocused        #5C84AC #2C3038 #DCD2DA #98C379   #2C3038
-client.urgent           #C678DD #C678DD #DCD2DA #98C379   #C678DD
-client.placeholder      #1E222A #1E222A #DCD2DA #98C379   #1E222A
 
-client.background       #1E222A
 
-##-- Autostart ---------------------------
+
+##-- Autostart
 
 #exec_always --no-startup-id 	"/usr/libexec/xfce-polkit &"
 exec_always --no-startup-id 	~/.config/sway/bin/autostart.sh
-
-
-# Your preferred terminal emulator
-set $term kitty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu "rofi -combi-modi window,drun,ssh,run -show combi -show-icons"
+exec_always nm-applet --indicator &
+exec --no-startup-id autotiling &
+exec_always --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 xwayland enable
 
-include /etc/sway/config-vars.d/*
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/bg_5.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+
 
 ### Idle configuration
 #
@@ -93,24 +123,17 @@ exec swayidle -w \
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
-### Key bindings
-#
 
-# -- Rofi --
+
+
+##-- Key bindings, shortcut & menu
+
+## Terminal
+set $term kitty
+bindsym $mod+Return exec $term
+
+# Rofi Menu
 bindsym $mod+d					exec --no-startup-id ~/.config/sway/rofi/bin/launcher
 bindsym $mod+n 					exec --no-startup-id ~/.config/sway/rofi/bin/network_menu
 bindsym $mod+x 					exec --no-startup-id ~/.config/sway/rofi/bin/powermenu
@@ -120,162 +143,131 @@ bindsym $mod+r 					exec --no-startup-id ~/.config/sway/rofi/bin/asroot
 bindsym $mod+w 					exec --no-startup-id ~/.config/sway/rofi/bin/windows
 
 # Basics:
-#
-    # Start a terminal
-    bindsym $mod+Return exec $term
+# Kill focused window
+bindsym $mod+q kill
 
-    # Kill focused window
-    bindsym $mod+q kill
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
 
-    # Start your launcher
-    # bindsym $mod+d exec $menu
+# Reload the configuration file
+bindsym $mod+Shift+r reload
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    # Reload the configuration file
-    bindsym $mod+Shift+r reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
 # Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-#
 # Workspaces:
-#
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
+
 # Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+#You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+# Switch the current container between different layout styles
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+e layout toggle split
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+# Move focus to the parent container
+bindsym $mod+a focus parent
 
-    # Switch the current container between different layout styles
-    bindsym $mod+Shift+s layout stacking
-    bindsym $mod+Shift+w layout tabbed
-    bindsym $mod+Shift+e layout toggle split
-
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-#
 # Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
 # Resizing containers:
-#
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+# left will shrink the containers width
+# right will grow the containers width
+# up will shrink the containers height
+# down will grow the containers height
+bindsym $left resize shrink width 10px
+bindsym $down resize grow height 10px
+bindsym $up resize shrink height 10px
+bindsym $right resize grow width 10px
+# Ditto, with arrow keys
+bindsym Left resize shrink width 10px
+bindsym Down resize grow height 10px
+bindsym Up resize shrink height 10px
+bindsym Right resize grow width 10px
+# Return to default mode
+bindsym Return mode "default"
+bindsym Escape mode "default"
 }
 bindsym $alt+Shift+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-#set $waybar "waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css &"
-#exec --no-startup-id $waybar
-# bar { 
-#     
-#     swaybar_command waybar
-#}
-
 # ScreenShot
-# capture all screens to clipboard    
-bindsym Print exec grim - | wl-copy
-
-# Capture and save all screens to screenshot
-bindsym $mod+Print exec grim - | wl-copy | grim ~/Pictures/Screenshots/$(date +'%s_grim.png') | viewnior ~/Pictures/Screenshots/$(date +'%s_grim.png')
+set $time `date +%Y-%m-%d-%H-%M-%S`
+set $dir "Pictures/Screenshots"
+set $file "Screenshot_${time}_grim.png"
+# Capture copy and save all screens to screenshot
+bindsym Print exec grim - | wl-copy | grim "$dir/$file" | sleep 0.5 && viewnior "$dir/$file"
+# Capture copy and save spesific widows to screenshot
+bindsym $mod+Print exec grim -t png -g "$(slurp)" "$dir/$file" - | wl-copy | sleep 0.5 && viewnior "$dir/$file"
 
 ##-- Workspace Rules ------------------------
-assign [class="Lxappearance|Nitrogen"] 7
-assign [class="Pavucontrol|Xfce4-power-manager-settings"] 6
+#assign [class="Lxappearance|Nitrogen"] 7
+#assign [class="Pavucontrol|Xfce4-power-manager-settings"] 6
 
 ##-- Window Rules ------------------------
 for_window [window_role="pop-up"] floating enable
@@ -286,61 +278,47 @@ for_window [class="Lxappearance|Nitrogen|"] floating enable
 for_window [class="Kvantum Manager|qt5ct"] floating enable
 for_window [title="Open File|ncmpcpp|btop|Editing"] floating enable
 for_window [title="Open File|btop"] resize set 800 600
-
 # Polkit
 for_window [app_id="xfce-polkit"] floating enable
-
 # Discord 
-assign [class="discord"] 4
-
+#assign [class="discord"] 4
 # Code
 for_window [class="Code"] floating disable
-assign [class="Code"] 3
-
+#assign [class="Code"] 3
 # Geany
-assign [app_id="geany"] 3
-
+#assign [app_id="geany"] 3
 # TablePlus
 for_window [app_id="TablePlus"] floating disable
-assign [app_id="TablePlus"] 3
-
+#assign [app_id="TablePlus"] 3
 # Geany
 for_window [app_id="kitty"] floating disable
-assign [app_id="kitty"] 2
-
+#assign [app_id="kitty"] 2
 # Brave
 for_window [class="Brave-browser"] floating disable
-assign [class="Brave-browser"] 1
-
+#assign [class="Brave-browser"] 1
 # OBS
 for_window [app_id="com.obsproject.Studio"] floating disable
-assign [app_id="com.obsproject.Studio"] 5
-
+#assign [app_id="com.obsproject.Studio"] 5
 # VLC
 for_window [class="vlc"] floating disable
-assign [class="vlc"] 5
-
+#assign [class="vlc"] 5
 # ncmpcpp
-assign [title="ncmpcpp"] 5
-
+#assign [title="ncmpcpp"] 5
 # Viewnior
 for_window [class="Viewnior"] floating enable
-
 # Network Manager
 for_window [app_id="nm-connection-editor"] floating enable
-
 # Vbox
-assign [class="VirtualBox Manager|qemu|Qemu-system-x86_64|Genymotion|Genymotion Player"] 6
-
+#assign [class="VirtualBox Manager|qemu|Qemu-system-x86_64|Genymotion|Genymotion Player"] 6
 # Archive Manager
 for_window [app_id="file-roller"] floating enable
-
 # Audio Control
 for_window [app_id="pavucontrol"] floating enable
-
 # XDM
 for_window [class="xdman-Main"] floating enable
 
 
 
 include /etc/sway/config.d/*
+include /etc/sway/config-vars.d/*
+

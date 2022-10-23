@@ -15,9 +15,7 @@ rofi \
 	-drun-display-format "{name}" \
 	-no-drun-show-actions \
 	-show combi \
-	-show-icons \
 	-terminal kitty \
 	-kb-cancel Escape \
 	-theme "$DIR"/rofi/themes/launcher.rasi
-
 

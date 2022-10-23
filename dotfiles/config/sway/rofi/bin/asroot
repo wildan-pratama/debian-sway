@@ -29,7 +29,7 @@ case $chosen in
         "$DIR"/bin/asroot.sh 'dbus-run-session nemo'
         ;;
     $editor)
-        "$DIR"/bin/asroot.sh geany
+        "$DIR"/bin/asroot.sh 'dbus-run-session geany'
         ;;
     $clifm)
         "$DIR"/bin/asroot.sh "$term -e ranger"

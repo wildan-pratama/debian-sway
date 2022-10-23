@@ -6,12 +6,11 @@
 DIR="$HOME/.config/sway"
 
 time=`date +%Y-%m-%d-%H-%M-%S`
-geometry=`xrandr | grep 'current' | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current'`
-dir="`xdg-user-dir PICTURES`/Screenshots"
-file="Screenshot_${time}_${geometry}.png"
+dir="Pictures/Screenshots"
+file="Screenshot_${time}_grim.png"
 
 # Commands
-notify_cmd_shot="dunstify -u low --replace=699 -i /usr/share/icons/dunst/picture.png"
+notify_cmd_shot="dunstify -u low --replace=699 -i /usr/share/extra/icons/dunst/picture.png"
 rofi_command="rofi -theme $DIR/rofi/themes/screenshot.rasi"
 
 # Buttons
@@ -24,7 +23,7 @@ inten=""
 # notify and view screenshot
 notify_view () {
 	${notify_cmd_shot} "Copied to clipboard."
-	viewnior ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	viewnior ${dir}/"$file"
 	if [[ -e "$dir/$file" ]]; then
 		${notify_cmd_shot} "Screenshot Saved."
 	else
@@ -34,42 +33,47 @@ notify_view () {
 
 # Copy screenshot to clipboard
 copy_shot () {
-	tee "$file" | xclip -selection clipboard -t image/png
+	wl-copy
 }
 
 # countdown
 countdown () {
 	for sec in `seq $1 -1 1`; do
-		dunstify -t 1000 --replace=699 -i /usr/share/archcraft/icons/dunst/timer.png "Taking shot in : $sec"
+		dunstify -t 1000 --replace=699 -i /usr/share/extra/icons/dunst/timer.png "Taking shot in : $sec"
 		sleep 1
 	done
 }
 
 # take shots
 shotnow () {
-	grim - | wl-copy | grim ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	sleep 0.5 && grim "$dir/$file"
+	copy_shot < "$dir/$file"
 	notify_view
 }
 
 shot5 () {
 	countdown '5'
-	grim - | wl-copy | grim ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	sleep 1 && grim "$dir/$file"
+	copy_shot < "$dir/$file"
 	notify_view
 }
 
 shot10 () {
 	countdown '10'
-	grim - | wl-copy | grim ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	sleep 1 && grim "$dir/$file"
+	copy_shot < "$dir/$file"
 	notify_view
 }
 
 shotwin () {
-	grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy | grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" ~/Pictures/Screenshots/$(date +'%s_grim.png')
+	grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" "$dir/$file"
+	copy_shot < "$dir/$file"
 	notify_view
 }
 
 shotarea () {
-	grim -t png -g "$(slurp)" ~/Pictures/Screenshots/$(date +'%s_grim.png') - | wl-copy 
+	grim -t png -g "$(slurp)" "$dir/$file" 
+	copy_shot < "$dir/$file"
 	notify_view
 }
 

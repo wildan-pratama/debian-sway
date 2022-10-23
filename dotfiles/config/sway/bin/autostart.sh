@@ -4,36 +4,24 @@
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 ## Autostart Programs
 
-# Kill already running process
-_ps=(dunst mpd xfce-polkit waybar autotiling)
-for _prs in "${_ps[@]}"; do
-	if [[ `pidof ${_prs}` ]]; then
-		killall -9 ${_prs}
-	fi
-done
+## Kill if already running
+killall -9 dunst waybar nm-applet autotiling
 
-# Fix cursor
+## Fix cursor
 xsetroot -cursor_name left_ptr
 
-# Polkit agent
-/usr/libexec/xfce-polkit &
+## Polkit agent (debian)
+if [[ ! `pidof xfce-polkit` ]]; then
+	/usr/libexec/xfce-polkit &
+fi
 
-
-# Luanch Waybar
+## Luanch Waybar
 waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css &
 
-# Lauch notification daemon
+## Lauch notification daemon
 dunst -config ~/.config/sway/bin/dunstrc
 
-# Start mpd
-exec mpd &
+## Launch Autotling
+autotling &
 
-# Set theme
-gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
-gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-gsettings set $gnome-schema cursor-theme "Layan-border Cursors"
-gsettings set $gnome-schema font-name "JetBrains Mono Medium 10"
-
-# Start autotiling
-autotiling
 
