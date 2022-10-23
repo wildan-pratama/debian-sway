@@ -24,37 +24,9 @@ Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/uno
 
     ./install.sh
    
-## Contained In The Script
-    cp -R .config/* ~/.config/
+## this script doesn't install any display manager, so if you don't have a display manager you can login using tty and execute sway
     
-    cp .profile ~/.profile
-    
-    cp .gtkrc-2.0 ~/.gtkrc-2.0
-    
-    chmod -R +x ~/.config/sway/scripts
-    
-    chmod -R +x ~/.config/waybar/scripts
-    
-    sudo pacman -Syu --needed --noconfirm - < packages-repository.txt
-    
-    dbus-launch dconf load / < xed.dconf
-    
-SDDM is the default display manager
-    
-    systemctl enable sddm.service
-    
-    systemctl start sddm.service
-    
-## Post install
-
-- Keyboard layout in: `~/.config/sway/config.d/input`
-- Screen settings in: `~/.config/sway/config.d/output`
-- Keybindings Cheatsheet: press keyboard icon in waybar
-
-- If your experiencing issues with your cursor - edit file `~/.profile` and comment out `export WLR_NO_HARDWARE_CURSORS=1`     
- 
-## Get involved at our forum:
-https://forum.endeavouros.com/t/sway-edition-general-conversation
+    sway
 
 ## Tutorial for sway-wm settings:
 
