@@ -56,6 +56,10 @@ Main shortcuts: `~/.config/sway/config`
  - <kbd>MOD</kbd>+<kbd>↑ ↓ → ←</kbd>  = switch focus respectively 
  - <kbd>MOD</kbd>+<kbd>SHIFT</kbd>+<kbd>MINUS</kbd> = send to scratchpad
  - <kbd>MOD</kbd>+<kbd>MINUS</kbd> = cycle through scratchpad
+ - <kbd>MOD</kbd>+<kbd>N</kbd> = open network manager
+ - <kbd>MOD</kbd>+<kbd>M</kbd> = open mpd controller
+ - <kbd>MOD</kbd>+<kbd>R</kbd> = open root menu
+ - <kbd>MOD</kbd>+<kbd>W</kbd> = open window menu
  
  
  
@@ -71,10 +75,18 @@ Is set to default for swaywm and can be changed to:
    
 
 
+![image](https://user-images.githubusercontent.com/84622086/197395301-3249793c-097d-464f-973b-dee0a5092d27.png)
+
 ![image](https://user-images.githubusercontent.com/84622086/197395071-52498d0c-d5d4-409c-9be3-18c09a7d97c6.png)
 
-![wofi](https://forum.endeavouros.com/uploads/default/original/3X/9/d/9daff7f842bd9db097e0bb9d6be5cf5b65e6baa0.jpeg)
+![image](https://user-images.githubusercontent.com/84622086/197395330-83614e07-eb2e-4dcd-9894-fe1826b03524.png)
+
+![image](https://user-images.githubusercontent.com/84622086/197395349-8771f2c0-e773-47d9-880f-74be74588bcb.png)
+
+![image](https://user-images.githubusercontent.com/84622086/197395395-661792d3-115d-429a-81ab-bf7a1cc64449.png)
+
+
 
 Waybar :
-![waybar](https://forum.endeavouros.com/uploads/default/original/3X/7/3/73b22b2a678c6836c3b2d15747b0ef28e064fbc2.png)
+![oie_C8xapwpKYsYY](https://user-images.githubusercontent.com/84622086/197395557-53b0d9ab-9e43-4acc-b43f-d55e361d6b54.png)
 
