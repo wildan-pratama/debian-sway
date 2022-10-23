@@ -43,10 +43,10 @@ Main shortcuts: `~/.config/sway/config`
 
 <kbd>MOD</kbd> key is set to the <kbd>WINKEY</kbd>/<kbd>LINKEY</kbd>
 
- - <kbd>MOD</kbd>+<kbd>Return</kbd> = open floating terminal (XFCE4-Terminal)
- - <kbd>MOD</kbd>+<kbd>O</kbd> = open Browser (firefox)
- - <kbd>MOD</kbd>+<kbd>N</kbd> = open File Manager (thunar)
- - <kbd>MOD</kbd>+<kbd>D</kbd>= app menu (wofi)
+ - <kbd>MOD</kbd>+<kbd>Return</kbd> = open terminal (kitty)
+ - <kbd>MOD</kbd>+<kbd>O</kbd> = open Browser (brave)
+ - <kbd>MOD</kbd>+<kbd>P</kbd> = open File Manager (nemo)
+ - <kbd>MOD</kbd>+<kbd>D</kbd>= app menu (rofi)
  - <kbd>MOD</kbd>+<kbd>Q</kbd> = close focused app [kill]
  - <kbd>Shift</kbd>+<kbd>PrtSc</kbd> = screenshot/bring up screenshot menu
  - <kbd>MOD</kbd>+<kbd>SHIFT</kbd>+<kbd>E</kbd> = power-menu
