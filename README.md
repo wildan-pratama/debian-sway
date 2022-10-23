@@ -50,7 +50,7 @@ Main shortcuts: `~/.config/sway/config`
  - <kbd>MOD</kbd>+<kbd>Q</kbd> = close focused app [kill]
  - <kbd>MOD</kbd>+<kbd>PrtSc</kbd> = screenshot/bring up screenshot menu
  - <kbd>MOD</kbd>+<kbd>X</kbd> = power-menu
- - <kbd>MOD</kbd>+<kbd>R</kbd> = resize mode
+ - <kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> = resize mode
  - <kbd>MOD</kbd>+<kbd>SHIFT</kbd>+<kbd>SPACE</kbd>  = float window
      - <kbd>MOD</kbd>+<kbd>HOLD DOWN</kbd> = drag floating window
  - <kbd>MOD</kbd>+<kbd>↑ ↓ → ←</kbd>  = switch focus respectively 
@@ -65,8 +65,8 @@ Main shortcuts: `~/.config/sway/config`
 Is set to default for swaywm and can be changed to:
 
 - stacking: Only the focused window in the container is displayed. You get a list of windows at the top of the container. 
-   - <kbd>MOD</kbd>+<kbd>S</kbd> = Vertical List
-   - <kbd>MOD</kbd>+<kbd>W</kbd> = Horizontal List
+   - <kbd>MOD</kbd>+<kbd>B</kbd> = Vertical List
+   - <kbd>MOD</kbd>+<kbd>V</kbd> = Horizontal List
      - navigate lists with <kbd>MOD</kbd>+<kbd>↑ ↓ → ←</kbd> 
    - <kbd>MOD</kbd>+<kbd>E</kbd> = Back to tiling
    
