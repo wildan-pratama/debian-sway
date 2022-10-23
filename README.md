@@ -1,6 +1,6 @@
-# Sway-WM Setup and Theme for EndeavourOS
+# Sway-WM Setup and Theme for Debian
 
-**Sway EndeavourOS Community Edition**
+**Sway Nordic Edition**
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2022.svg)]()
 
