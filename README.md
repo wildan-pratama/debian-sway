@@ -87,6 +87,9 @@ Is set to default for swaywm and can be changed to:
 
 ![image](https://user-images.githubusercontent.com/84622086/197395620-630290b0-341c-4f22-a936-0ea6f6844cab.png)
 
+![image](https://user-images.githubusercontent.com/84622086/197395664-532457a3-33a0-4586-b99c-b4ca719bbfe1.png)
+
+
 
 
 Waybar :
