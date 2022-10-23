@@ -48,8 +48,8 @@ Main shortcuts: `~/.config/sway/config`
  - <kbd>MOD</kbd>+<kbd>P</kbd> = open File Manager (nemo)
  - <kbd>MOD</kbd>+<kbd>D</kbd>= app menu (rofi)
  - <kbd>MOD</kbd>+<kbd>Q</kbd> = close focused app [kill]
- - <kbd>Shift</kbd>+<kbd>PrtSc</kbd> = screenshot/bring up screenshot menu
- - <kbd>MOD</kbd>+<kbd>SHIFT</kbd>+<kbd>E</kbd> = power-menu
+ - <kbd>MOD</kbd>+<kbd>PrtSc</kbd> = screenshot/bring up screenshot menu
+ - <kbd>MOD</kbd>+<kbd>X</kbd> = power-menu
  - <kbd>MOD</kbd>+<kbd>R</kbd> = resize mode
  - <kbd>MOD</kbd>+<kbd>SHIFT</kbd>+<kbd>SPACE</kbd>  = float window
      - <kbd>MOD</kbd>+<kbd>HOLD DOWN</kbd> = drag floating window
