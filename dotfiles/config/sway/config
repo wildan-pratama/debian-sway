@@ -129,9 +129,15 @@ exec swayidle -w \
 
 ##-- Key bindings, shortcut & menu
 
-## Terminal
+# Terminal
 set $term kitty
 bindsym $mod+Return exec $term
+
+# Browser
+bindsym $mod+o exec brave-browser
+
+# File
+bindsym $mod+p exec nemo
 
 # Rofi Menu
 bindsym $mod+d					exec --no-startup-id ~/.config/sway/rofi/bin/launcher
@@ -261,9 +267,9 @@ set $time `date +%Y-%m-%d-%H-%M-%S`
 set $dir "Pictures/Screenshots"
 set $file "Screenshot_${time}_grim.png"
 # Capture copy and save all screens to screenshot
-bindsym Print exec grim - | wl-copy | grim "$dir/$file" | sleep 0.5 && viewnior "$dir/$file"
+bindsym Print exec grim "$dir/$file" | wl-copy < "$dir/$file" | sleep 0.5 && viewnior "$dir/$file"
 # Capture copy and save spesific widows to screenshot
-bindsym $mod+Print exec grim -t png -g "$(slurp)" "$dir/$file" - | wl-copy | sleep 0.5 && viewnior "$dir/$file"
+bindsym $mod+Print exec grim -t png -g "$(slurp)" "$dir/$file" - | wl-copy < "$dir/$file" | sleep 0.5 && viewnior "$dir/$file"
 
 ##-- Workspace Rules ------------------------
 #assign [class="Lxappearance|Nitrogen"] 7

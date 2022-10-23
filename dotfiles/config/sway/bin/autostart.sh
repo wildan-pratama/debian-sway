@@ -5,7 +5,7 @@
 ## Autostart Programs
 
 ## Kill if already running
-killall -9 dunst waybar nm-applet autotiling
+killall -9 dunst waybar autotiling
 
 ## Fix cursor
 xsetroot -cursor_name left_ptr
@@ -21,7 +21,5 @@ waybar -c ~/.config/sway/waybar/config -s ~/.config/sway/waybar/style.css &
 ## Lauch notification daemon
 dunst -config ~/.config/sway/bin/dunstrc
 
-## Launch Autotling
-autotling &
 
 
