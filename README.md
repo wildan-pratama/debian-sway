@@ -24,7 +24,7 @@ Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/uno
 
     ./install.sh
    
-## this script doesn't install any display manager, so if you don't have a display manager you can login using tty and execute sway
+## This script doesn't install any display manager, so if you don't have a display manager you can login using tty and execute sway
     
     sway
 
@@ -32,13 +32,13 @@ Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/uno
 
  - Background handled by swaybg
  - Gtk3 theme handled by lxappearance
- - Filebrowser = Thunar
- - Default Terminal-Emulator = XFCE4-Terminal and/or Termite
- - Text-Editor = xed/nano
+ - Filebrowser = Nemo
+ - Default Terminal-Emulator = kitty
+ - Text-Editor = geany/nano
  - Bar = Waybar
  - Sound = Pulseaudio
 
-Main shortcuts: `~/.config/sway/cheatsheet`
+Main shortcuts: `~/.config/sway/config`
 
 
 <kbd>MOD</kbd> key is set to the <kbd>WINKEY</kbd>/<kbd>LINKEY</kbd>
