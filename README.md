@@ -95,3 +95,14 @@ Is set to default for swaywm and can be changed to:
 Waybar :
 ![oie_C8xapwpKYsYY](https://user-images.githubusercontent.com/84622086/197395557-53b0d9ab-9e43-4acc-b43f-d55e361d6b54.png)
 
+
+## This is include Brave browser repo and Visual studio code repo, so you can install Brave browser and Visual studio code by typing:
+
+
+
+    sudo nala install brave-browser code
+
+
+![image](https://user-images.githubusercontent.com/84622086/197396731-31b571b9-47fd-4e4d-92a0-df35a56b5ff9.png)
+
+
