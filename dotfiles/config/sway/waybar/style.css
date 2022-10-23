@@ -93,16 +93,16 @@
     color: @nord_dark_font;
 }
 #workspaces {
-   background: #D8DEE9;
+   background: #434C5E;
 }
 #workspaces button {
     font-weight: bold; /* Somewhy the bar-wide setting is ignored*/
     padding: 0;
-    color: #434C5E;
+    color: #D8DEE9;
     font-size: 0.9em;
 }
 #workspaces button.focused {
-    background: #8FBCBB;
+    background: #D8DEE9;
     color: #434C5E;
 }
 
