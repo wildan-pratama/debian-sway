@@ -1,4 +1,4 @@
-# Sway-WM Setup and Theme for Debian
+# Sway-WM Setup and Theme for Debian Sid
 
 **Sway Nordic Edition**
 
