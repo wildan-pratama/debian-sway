@@ -4,7 +4,7 @@
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 sudo cp sources.list /etc/apt/sources.list
 
-# Copy Fonts and Background
+# Copy Fonts
 sudo cp -aR dotfiles/fonts /usr/share
 sudo cp -aR dotfiles/extra /usr/share
 sudo cp -aR main.py /usr/bin
@@ -15,6 +15,7 @@ sudo chmod +x /usr/bin/main.py /usr/bin/autotiling
 sudo apt update
 sudo apt install nala -y
 sudo nala install sudo wget git curl zsh apt-transport-https software-properties-common gpg lsb-release ca-certificates -y
+sudo usermod -aG sudo $USER
 
 # Add Brave repo
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
