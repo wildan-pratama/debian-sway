@@ -69,9 +69,9 @@ case-indicator {
 inputbar {
     spacing:    					0px;
     text-color: 					@foreground;
-    border: 						2px;
+    border: 						0px;
     border-color: 					@selected;
-    border-radius: 					100%;
+    border-radius: 					20px;
     children: 						[ prompt,textbox-prompt-colon,entry ];
 }
 
@@ -155,7 +155,7 @@ button {
     padding: 						7px;
     background-color:				@background;
     text-color: 					@selected;
-    border: 						2px;
+    border: 						0px;
     border-radius: 					100%;
     border-color: 					@selected;
 }

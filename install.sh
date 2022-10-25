@@ -4,13 +4,6 @@
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 sudo cp sources.list /etc/apt/sources.list
 
-# Copy Fonts
-sudo cp -aR dotfiles/fonts /usr/share
-sudo cp -aR dotfiles/extra /usr/share
-sudo cp -aR main.py /usr/bin
-sudo ln -s /usr/bin/main.py /usr/bin/autotiling
-sudo chmod +x /usr/bin/main.py /usr/bin/autotiling
-
 # Install nala and additional package
 sudo apt update
 sudo apt install nala -y
@@ -58,7 +51,6 @@ cd ..
 # Install Theme, Icon and Font
 sudo nala install papirus-icon-theme fonts-noto-color-emoji -y
 sudo git clone https://github.com/EliverLara/Nordic.git /usr/share/themes/Nordic
-fc-cache -vf
 
 # Revome unused package
 sudo nala purge foot zutty -y
@@ -70,6 +62,13 @@ cp -aR dotfiles/config/* ~/.config
 cp dotfiles/config/.gtkrc-2.0 ~/
 cp -aR dotfiles/backgrounds ~/Pictures
 touch ~/.config/mpd/database
+mkdir -p ~/.local/share/fonts
+cp -aR dotfiles/fonts ~/.local/share
+sudo cp -aR dotfiles/extra /usr/share
+sudo cp -aR main.py /usr/bin
+sudo ln -s /usr/bin/main.py /usr/bin/autotiling
+sudo chmod +x /usr/bin/main.py /usr/bin/autotiling
+fc-cache -vf
 
 # Finish
 systemctl enable --user mpd
