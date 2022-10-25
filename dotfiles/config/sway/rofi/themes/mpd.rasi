@@ -146,7 +146,7 @@ element.selected.urgent {
 element.urgent,
 element.selected.active {
   background-color: @off;
-  text-color: @background;
+  text-color: @foreground;
   border-color: @off;
   border-radius: 100%;
 }

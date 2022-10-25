@@ -7,6 +7,6 @@
 	foreground:			#D8D8D8;
 	selected:			#D8DEE9;
 	urgent:				#E06C75;
-	on:					#87A181;
-	off:				#D88B9F;
+	on:					#5E81AC;
+	off:				#B48EAD;
 }
