@@ -7,4 +7,4 @@
 export SUDO_ASKPASS=~/.config/sway/bin/askpass.sh
 
 ## execute the application
-sudo -E $1
+sudo -E dbus-run-session $1

@@ -44,7 +44,8 @@ exec gsettings set org.gnome.desktop.interface font-name 'Sans 10
 ##-- Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/backgrounds/bganime-hd.png fill
+#output * bg ~/Pictures/backgrounds/bganime-hd.png fill
+output * bg ~/Pictures/backgrounds/anime-eye-nord.png fill
 #
 # Example configuration:
 #

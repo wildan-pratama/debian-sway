@@ -12,10 +12,10 @@ terminal=" Kitty"
 files=" Nemo"
 editor=" Geany"
 clifm=" Ranger"
-vim=" Vim"
+cus=" Custom"
 
 # Variable passed to rofi
-options="$terminal\n$files\n$editor\n$clifm\n$vim"
+options="$terminal\n$files\n$editor\n$clifm\n$cus"
 term='kitty'
 
 # Functions
@@ -26,16 +26,17 @@ case $chosen in
         "$DIR"/bin/asroot.sh "$term"
         ;;
     $files)
-        "$DIR"/bin/asroot.sh 'dbus-run-session nemo'
+        "$DIR"/bin/asroot.sh 'nemo'
         ;;
     $editor)
-        "$DIR"/bin/asroot.sh 'dbus-run-session geany'
+        "$DIR"/bin/asroot.sh 'geany'
         ;;
     $clifm)
         "$DIR"/bin/asroot.sh "$term -e ranger"
         ;;
-    $vim)
-        "$DIR"/bin/asroot.sh "$term -e vim"
+    $cus)
+        apps="$(rofi -dmenu -i -no-fixed-num-lines -p "Run as Root : " -theme ~/.config/sway/rofi/themes/askpass.rasi &)"
+		"$DIR"/bin/asroot.sh "$apps"
         ;;
 esac
 
