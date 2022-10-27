@@ -7,6 +7,7 @@ sudo cp sources.list /etc/apt/sources.list
 # Install nala and additional package
 sudo apt update
 sudo apt install nala -y
+sudo nala install --no-install-recommends sddm -y
 sudo nala install sudo wget git curl zsh apt-transport-https software-properties-common gpg lsb-release ca-certificates -y
 sudo usermod -aG sudo $USER
 

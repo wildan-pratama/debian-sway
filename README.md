@@ -24,9 +24,6 @@ Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/uno
 
     ./install.sh
    
-## This script doesn't install any display manager, so if you don't have a display manager you can login using tty and execute sway
-    
-    sway
 
 ## Tutorial for sway-wm settings:
 
