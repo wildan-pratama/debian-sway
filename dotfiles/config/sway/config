@@ -116,9 +116,9 @@ xwayland enable
 # Example configuration:
 #
 exec swayidle -w \
-          timeout 1800 'swaylock -f -c 000000' \
+          timeout 1800 'swaylock -f -i ~/Pictures/backgrounds/bganime-hd.png' \
           timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+          before-sleep 'swaylock -f -i ~/Pictures/backgrounds/bganime-hd.png'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when

@@ -53,14 +53,15 @@ case $chosen in
         fi
         ;;
     $lock)
-        swaylock -f -c 000000
+        swaylock -f -i ~/Pictures/backgrounds/bganime-hd.png
         ;;
     $suspend)
 		ans=$(get_confirmation &)
 		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
 			mpc -q pause
 			amixer set Master mute
-			swaylock -f -c 000000
+			swaylock -f -i ~/Pictures/backgrounds/bganime-hd.png
+			sleep 0.5s
 			systemctl suspend
 		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit
