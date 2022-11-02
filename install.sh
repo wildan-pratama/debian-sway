@@ -32,7 +32,7 @@ sudo nala install nemo btop neofetch network-manager-openvpn-gnome geany kitty v
 pip3 install i3ipc
 
 # Install Package for web dev
-nala install code composer nginx network-manager libnss3-tools jq xsel php8.1-cli php8.1-curl php8.1-mbstring php8.1-mcrypt php8.1-xml php8.1-zip php8.1-sqlite3 php8.1-mysql php8.1-pgsql php8.1-fpm -y
+sudo nala install code composer nginx network-manager libnss3-tools jq xsel php8.1-cli php8.1-curl php8.1-mbstring php8.1-mcrypt php8.1-xml php8.1-zip php8.1-sqlite3 php8.1-mysql php8.1-pgsql php8.1-fpm -y
 
 # Install xfce-polkit
 sudo nala install libglib2.0-dev libxfce4ui-2-dev libpolkit-agent-1-dev make cmake meson ninja-build build-essential -y
