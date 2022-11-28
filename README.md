@@ -49,7 +49,7 @@ Main shortcuts: `~/.config/sway/config`
  - <kbd>MOD</kbd>+<kbd>X</kbd> = power-menu
  - <kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> = resize mode
  - <kbd>MOD</kbd>+<kbd>SHIFT</kbd>+<kbd>SPACE</kbd>  = float window
-     - <kbd>MOD</kbd>+<kbd>HOLD DOWN</kbd> = drag floating window
+ - <kbd>MOD</kbd>+<kbd>HOLD DOWN</kbd> = drag floating window
  - <kbd>MOD</kbd>+<kbd>↑ ↓ → ←</kbd>  = switch focus respectively 
  - <kbd>MOD</kbd>+<kbd>SHIFT</kbd>+<kbd>MINUS</kbd> = send to scratchpad
  - <kbd>MOD</kbd>+<kbd>MINUS</kbd> = cycle through scratchpad
